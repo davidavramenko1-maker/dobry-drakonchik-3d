@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+<meta name="theme-color" content="#5fa83e"/>
+<title>Добрый Дракончик 3D</title>
+<link rel="icon" type="image/svg+xml" href="./favicon.svg"/>
+<link rel="stylesheet" href="./style.css"/>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
+</head>
+<body>
+<div class="game-root" id="root">
+  <canvas id="c" aria-hidden="true"></canvas>
+  <div class="catcher" id="catcher" hidden></div>
+  <div class="hud" id="hud" hidden>
+    <div class="hud-pill"><span class="ico">🎁</span><span><span class="kicker">Доставлено</span><strong id="score">0 / 5</strong></span></div>
+    <div class="hud-pill" id="chasedPill"><span class="ico">🔥</span><span><span class="kicker">Прогнано ведьм</span><strong id="chased">0</strong></span></div>
+    <div class="hud-actions">
+      <button class="icon-btn" id="muteBtn" aria-label="Звук">🔊</button>
+      <button class="icon-btn" id="pauseBtn" aria-label="Пауза">⏸</button>
+    </div>
+    <div class="hud-sub"><span class="hud-pill ghost" id="meadow"></span><span class="hud-pill ghost" id="wind" hidden></span><span class="hud-pill ghost" id="carry" hidden>Подарок упал — подбери!</span></div>
+  </div>
+  <p class="hint" id="hint" hidden>WASD/стрелки — лететь, Q/E — ниже/выше, тяни пальцем — рулить</p>
+  <button class="fire-btn" id="fireBtn" hidden><span>🔥</span>Огонь</button>
+  <div class="scrim" id="menu">
+    <section class="panel">
+      <p class="eyebrow">Добрая игра · 3D</p>
+      <h1>Добрый Дракончик</h1>
+      <p class="lede">Разнеси подарки по пяти домикам. Дракончик ничего не ломает — только радует.</p>
+      <div class="steps">
+        <div class="step"><span class="ico">✋</span>Веди пальцем или стрелками</div>
+        <div class="step"><span class="ico">🏠</span>Подлети к домику</div>
+        <div class="step"><span class="ico">🎁</span>Подарок сам сядет на крышу</div>
+        <div class="step"><span class="ico">🔥</span>Прогоняй ведьм огоньком</div>
+      </div>
+      <p class="stats" id="stats" hidden></p>
+      <div class="actions">
+        <button class="btn btn-primary" id="startBtn">▶ Полетели</button>
+        <button class="btn btn-quiet" id="muteBtn2">Звук включён</button>
+      </div>
+    </section>
+  </div>
+  <div class="scrim" id="pause" hidden>
+    <section class="panel">
+      <p class="eyebrow">Пауза</p><h1>Дракончик ждёт</h1>
+      <p class="lede" id="pauseText"></p>
+      <div class="actions">
+        <button class="btn btn-primary" id="resumeBtn">▶ Дальше</button>
+        <button class="btn btn-quiet" id="restartBtn">Сначала эту поляну</button>
+        <button class="btn btn-quiet" id="menuBtn">В меню</button>
+      </div>
+    </section>
+  </div>
+  <div class="scrim" id="clear" hidden>
+    <section class="panel">
+      <p class="eyebrow" id="clearMeadow"></p><h1>Все подарки на месте</h1>
+      <p class="lede">Домики светятся. Можно лететь на следующую поляну — там другой ветер, другие холмы и больше ведьм.</p>
+      <p class="stats" id="clearStats"></p>
+      <div class="actions">
+        <button class="btn btn-primary" id="nextBtn">Следующая поляна</button>
+        <button class="btn btn-quiet" id="menuBtn2">В меню</button>
+      </div>
+    </section>
+  </div>
+  <div id="floaters"></div>
+</div>
+<script type="module" src="./game.js"></script>
+</body>
+</html>
